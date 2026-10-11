@@ -451,6 +451,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 });
               }
             });
+          } else if (index == 2) {
+            _onSystemDropdownTap();
+            if (mounted) {
+              setState(() {
+                _activeNavIndex = 0;
+              });
+            }
           } else if (index == 3) {
             Navigator.push(
               context,
@@ -464,8 +471,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 });
               }
             });
-          } else if (index != 0) {
-            _showTabPlaceholder(index);
           }
         },
       ),
@@ -580,24 +585,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         );
     }
-  }
-
-  void _showTabPlaceholder(int index) {
-    final titles = [
-      'Home',
-      'Generation History',
-      'System Overview',
-      'More Settings',
-    ];
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: AppColors.textPrimary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        content: Text('${titles[index]} tab selected.'),
-        duration: const Duration(milliseconds: 1400),
-      ),
-    );
   }
 
   Widget _buildDrawer() {
